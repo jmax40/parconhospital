@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+
+<style>
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .big-box {
+    flex: 1;
+    margin: 0 10px;
+    text-align: center;
+  }
+
+  /* Increase checkbox size */
+  input[type="checkbox"] {
+    transform: scale(4.5); /* Increase checkbox size */
+    margin-bottom: 5px; /* Adjust spacing */
+  }
+
+    .underline-input {
+    border: none;
+    border-bottom: 1px solid #000; /* Adding a bottom border for the underline effect */
+    outline: none; /* Removes the default focus outline */
+  }
+
+    .align-left {
+    margin-left: 800px; /* Adjust this value as needed for spacing */
+  }
+    .no-spacing {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Center align text */
+  .no-spacing center {
+    text-align: center;
+  }
+
+    .responsive-input {
+    width: 100%;
+    box-sizing: border-box; /* Include padding and border in the width calculation */
+  }
+    .responsive-image {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Remove default inline block space */
+  }
+
+
+
+.cutting-line {
+  height: 2px;
+  width: 100%;
+  max-width: 5000px;
+  border-top: 5px dotted #000;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+</style>
+
+<body>
+
+
+<form action="/submit-form" method="post">
+
+<center>
+  <img src="headerx.png" alt="Description of the image" class="responsive-image">
+</center>
+
+
+<div class="container">
+ 
+  <div class="big-box">
+    <h4>Priority</h4>
+    <input type="checkbox" id="priority-box">
+  </div>
+  <div class="big-box">
+    <h4>Routine</h4>
+    <input type="checkbox" id="routine-box">
+  </div>
+  <div class="big-box">
+    <h4>Medico Legal</h4>
+    <input type="checkbox" id="medico-box">
+  </div>
+  <div class="big-box">
+    <h4>Non-Medico Legal</h4>
+    <input type="checkbox" id="non-medico-box">
+  </div>
+</div>
+<br>
+
+
+ <p>Referred to: <input type="text" name="referred_to" class="underline-input"> Refered from: Dr. Francisco C. Parcon Clinic and Hospital</p>
+
+
+<p>Referral Category A1 ( ) A2 ( ) BI ( ) B2 ( ) C1 ( ) C2 ( )                       Unclassified()Note: </p>
+<p>Date: <input type="text" name="date" class="underline-input" >Time: <input type="text" name="date" class="underline-input" ></p>
+<p>Name: <input type="text" placeholder="Surname Firstname Middlename" name="name" class="underline-input" >Sex: <input type="text" name="name" class="underline-input" >Age: <input type="text" name="name" class="underline-input" ></p>
+
+
+
+<p>Address: <input type="text" name="referred_to" class="underline-input"> </p>
+<p>Chief Complain/s: <input type="text" name="referred_to" class="underline-input"> </p>
+
+<p>Pertinent Hx & PE:  BP:<input type="text" name="referred_to" class="underline-input">mmHG     HR:<input type="text" name="referred_to" class="underline-input">bpm RR:<input type="text" name="referred_to" class="underline-input">cpm   TEMP:<input type="text" name="referred_to" class="underline-input">C    Wt:<input type="text" name="referred_to" class="underline-input">Kg O2 Sat<input type="text" name="referred_to" class="underline-input">%</p>
+
+<p><input type="text" name="referred_to" class="underline-input responsive-input"> </p>
+<p><input type="text" name="referred_to" class="underline-input responsive-input"> </p>
+
+<p>Diagnosis:<input type="text" name="referred_to" class="underline-input responsive-input"> </p>
+
+<p>Action Taken:<input type="text" name="referred_to" class="underline-input responsive-input"> </p>
+<p>Reason for Referral:<input type="text" name="referred_to" class="underline-input responsive-input"> </p>
+
+
+
+
+<div class="container">
+ 
+  <div class="big-box">
+    <h5>Further Evaluation & Management</h5>
+    <input type="checkbox" id="priority-box">
+  </div>
+  <div class="big-box">
+    <h4>Per patient Request</h4>
+    <input type="checkbox" id="routine-box">
+  </div>
+  <div class="big-box">
+    <h4>No Doctor Available</h4>
+    <input type="checkbox" id="medico-box">
+  </div>
+  <div class="big-box">
+    <h4>For Work-up</h4>
+    <input type="checkbox" id="non-medico-box">
+  </div>
+</div>
+<br>
+<br>
+
+Reffered by:
+<div style="display: inline-block; text-align: left; margin-right: 500px;">
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <input type="text" class="underline-input align-right">
+    <label style="margin-top: 5px;">Printed Name and Signature</label>
+  </div>
+</div>
+
+<div style="display: inline-block; text-align: right; margin-left: 20px;">
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <input type="text" class="underline-input align-right">
+    <label style="margin-top: 5px;">Designation</label>
+  </div>
+</div>
+
+
+
+
+
+
+<p>Cellphone No: 09178070079</p>
+
+<p> Noted: Please retain this part at Receiving Facility </p>
+
+
+<div class="cutting-line"></div>
+
+ <center><h2>CLINICAL REFERRAL FORM</h2></center>
+ <p>Referred to: <input type="text" name="referred_to" class="underline-input"> Refered from: Dr. Francisco C. Parcon Clinic and Hospital</p>
+ <p>Date: <input type="text" name="date" class="underline-input" >Time: <input type="text" name="date" class="underline-input" ></p>
+<p>Name: <input type="text" placeholder="Surname Firstname Middlename" name="name" class="underline-input" >Sex: <input type="text" name="name" class="underline-input" >Age: <input type="text" name="name" class="underline-input" ></p>
+<p>Address: <input type="text" name="referred_to" class="underline-input responsive-input"> </p>
+
+<p>Action Taken: <input type="text" name="referred_to" class="underline-input responsive-input"> </p>
+<p>Recommendation/Instruction: <input type="text" name="referred_to" class="underline-input responsive-input"> </p>
+<p> <input  type="text" name="referred_to" class="underline-input"> </p>
+Printed Name and Signature
+
+<p>Cellphone No: <input type="text" name="referred_to" class="underline-input"> </p>
+
+
+</form>

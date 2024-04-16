@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+
+<style>
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+    .underline-input {
+    border: none;
+    border-bottom: 1px solid #000; /* Adding a bottom border for the underline effect */
+    outline: none; /* Removes the default focus outline */
+  }
+
+    .align-left {
+    margin-left: 800px; /* Adjust this value as needed for spacing */
+  }
+    .no-spacing {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Center align text */
+  .no-spacing center {
+    text-align: center;
+  }
+
+    .responsive-input {
+    width: 100%;
+    box-sizing: border-box; /* Include padding and border in the width calculation */
+  }
+    .responsive-image {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Remove default inline block space */
+  }
+
+
+
+.cutting-line {
+  height: 2px;
+  width: 100%;
+  max-width: 5000px;
+  border-top: 5px dotted #000;
+  margin-right: auto;
+  margin-left: auto;
+}
+.input-container {
+  border: 3px solid #ccc; /* Border style */
+  padding: 10px; /* Add some padding for space inside the container */
+  width: 100%; /* Set width to 100% */
+  box-sizing: border-box; /* Include padding and border in the element's total width */
+}
+
+
+.inline-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.row {
+  width: 30%; /* Adjust as needed */
+  margin-bottom: 10px; /* Add space between rows */
+}
+
+.inline-input {
+  width: 100%;
+}
+
+.inline-container {
+  display: flex;
+  border: 3px solid #ccc; /* Container border */
+  padding: 5px; /* Padding around container */
+}
+
+.row {
+  flex: 1; /* Occupy available space */
+  margin: 0 5px; /* Margin between rows */
+}
+
+
+}
+
+
+</style>
+
+<body>
+
+
+<form action="/submit-form" method="post">
+
+ <center><h2>DR. FRANCISCO C. PARCON CLINIC AND HOSPITAL</h2>
+  <p> BRGY. RIZAL, BO.3, BANGA SOUTH COTABATO  </p></center>
+
+
+
+<center><h2>PATIENT'S CLINICAL RECORDS</h2></center>
+
+<div class="input-container">
+  <p>PATIENT NAME: <input type="text" name="referred_to" class="underline-input responsive-input"> </p>
+
+  <div style="text-align: right;">
+    <p>ADMISSION NO: <input type="text" name="admission_no" class="underline-input"></p>
+    <p>ROOM: <input type="text" name="room" class="underline-input"></p>
+  </div>
+</div>
+
+<div class="input-container">
+  <p>PERMANENT ADDRESS: <input type="text" name="referred_to" class="underline-input responsive-input"> </p>
+
+  <div style="text-align: right;">
+    <p>GENDER: <input type="text" name="admission_no" class="underline-input"></p>
+    <p>CIVIL STATUS: <input type="text" name="admission_no" class="underline-input"></p>
+  </div>
+</div>
+
+
+
+<div class="inline-container">
+  <div class="row">
+
+ <p>BIRTH DATE: <input type="text" name="referred_to" class="underline-input"> </p>
+
+  </div>
+  <div class="row">
+    <p>AGE:    <br><input type="text" name="referred_to" class="underline-input"> </p>
+  </div>
+  <div class="row">
+    <p>BIRTH PLACE: <input type="text" name="referred_to" class="underline-input"> </p>
+  </div>
+  <div class="row">
+     <p>NATIONALITY: <input type="text" name="referred_to" class="underline-input"> </p>
+  </div>
+  <div class="row">
+     <p>RELIGION: <input type="text" name="referred_to" class="underline-input"> </p>
+  </div>
+  <div class="row">
+     <p>OCCUPATION: <input type="text" name="referred_to" class="underline-input"> </p>
+  </div>
+</div>
+
+
+<div class="inline-container">
+  <div class="row">
+
+ <p>EMPLOYER:(TYPE OF BUISNESS) <input type="text" name="referred_to" class="underline-input"> </p>
+
+  </div>
+
+  <div class="row">
+    <p>ADDRESS: <input type="text" name="referred_to" class="underline-input"> </p>
+  </div>
+
+  <div class="row">
+     <p>TEL/MOBILE NO: <input type="text" name="referred_to" class="underline-input"> </p>
+  </div>
+
+</div>
+
+
+
+<div class="inline-container">
+  <div class="row">
+
+ <p>FATHER'S NAME <input type="text" name="referred_to" class="underline-input"> </p>
+
+  </div>
+
+  <div class="row">
+    <p>ADDRESS: <input type="text" name="referred_to" class="underline-input"> </p>
+  </div>
+  
+ 
+
+</div>
+
+
+
+
+<div class="inline-container">
+  <div class="row">
+
+ <p>MOTHER'S NAME <input type="text" name="referred_to" class="underline-input"> </p>
+
+  </div>
+
+  <div class="row">
+    <p>ADDRESS: <input type="text" name="referred_to" class="underline-input"> </p>
+  </div>
+  
+ 
+
+</div>
+
+
+
+
+
+<div class="inline-container">
+  <div class="row">
+
+<p>ADMISSION</p>
+ <p>DATE: <input type="text" name="referred_to" class="underline-input"> </p>
+  <p>TIME: <input type="text" name="referred_to" class="underline-input"> </p>
+
+  </div>
+
+  <div class="row">
+
+<p>DISCHARGE</p>
+ <p>DATE: <input type="text" name="referred_to" class="underline-input"> </p>
+  <p>TIME: <input type="text" name="referred_to" class="underline-input"> </p>
+
+   
+  </div>
+
+    <div class="row">
+
+<p>TOTAL OF DAY'S</p>
+ <p><input type="text" name="referred_to" class="underline-input"> </p>
+ 
+   
+  </div>
+
+
+
+
+    <div class="row">
+
+<p>TOTAL OF ADMISSION</p>
+<p>
+  <label><input type="checkbox" name="check"> NEW</label>
+</p>
+<p>
+  <label><input type="checkbox" name="check"> OLD</label>
+</p>
+
+   
+  </div>
+
+</div>
+
+
+
+
+
+<div class="inline-container">
+  <div class="row">
+
+ <p>MOTHER'S NAME <input type="text" name="referred_to" class="underline-input"> </p>
+
+  </div>
+
+  <div class="row">
+    <p>ADDRESS: <input type="text" name="referred_to" class="underline-input"> </p>
+  </div>
+
+   <div class="row">
+    <p>RELATIONSHIP TO PATIENT: <input type="text" name="referred_to" class="underline-input"> </p>
+  </div>
+  </div>
+
+
+
+<div class="inline-container">
+  <div class="row">
+
+ <p>ADMITTING DIAGNOSIS: <input type="text" name="referred_to" class="underline-input"> </p>
+
+  </div>
+
+  <div class="row">
+    <p>FINAL DIAGNOSES: <input type="text" name="referred_to" class="underline-input"> </p>
+  </div>
+
+   <div class="row">
+    <p>ICD10: <input type="text" name="referred_to" class="underline-input"> </p>
+  </div>
+  </div>
+
+
+
+
+<div class="inline-container">
+  <div class="row">
+
+
+ <p>SURGICAL OPERATION OR INTERVENTION: <input type="text" name="referred_to" class="underline-input"> </p>
+  <p>OTHER OPERATION(S) PROCEEDURE(S): <input type="text" name="referred_to" class="underline-input"> </p>
+<p>ACCIDENTS/ INJURIES / POISONING: <input type="text" name="referred_to" class="underline-input"> </p>
+  </div>
+
+
+
+    <div class="row">
+
+ <p>RUV: <input type="text" name="referred_to" class="underline-input"> </p>
+ <br>
+
+ <p>PEACE OF OCCURENCE: <input type="text" name="referred_to" class="underline-input"> </p>
+   
+  </div>
+
+</div>
+
+
+
+
+
+
+<div class="inline-container">
+  <div class="row">
+
+
+<p>DISPOSITION</p>
+<p>
+  <label><input type="checkbox" name="check"> DISCHARGE</label>
+</p>
+<p>
+  <label><input type="checkbox" name="check"> TRANSFERRED</label>
+</p>
+<p>
+  <label><input type="checkbox" name="check"> HAMA</label>
+</p>
+<p>
+  <label><input type="checkbox" name="check"> ABSCONDED</label>
+</p>
+
+</div>
+  <div class="row">
+
+
+<p>RESULT</p>
+<p>
+  <label><input type="checkbox" name="check"> RECOVERED</label>
+</p>
+<p>
+  <label><input type="checkbox" name="check"> DIED</label>
+</p>
+<p>
+  <label><input type="checkbox" name="check"> IMPROVED</label>
+</p>
+<p>
+  <label><input type="checkbox" name="check"> UNIMPROVED</label>
+</p>
+   
+  </div>
+
+    <div class="row">
+
+<p> </p>
+ <p> </p>
+ 
+   
+  </div>
+
+
+
+
+    <div class="row">
+
+<p>ATTENDING PHYSICIAN</p>
+<p>
+</p>
+<br>
+<br>
+<br>
+ <p><input type="text" name="referred_to" class="underline-input"> </p>
+ <p> SIGNATURE OVER PRINTED NAME</p>
+
+   
+  </div>
+
+</div>
