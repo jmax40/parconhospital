@@ -63,6 +63,8 @@
         #printButton i {
             margin-right: 5px;
         }
+
+
     </style>
     <!-- Include Font Awesome (adjust the path to your Font Awesome CSS file) -->
     <link rel="stylesheet" href="path-to-your-font-awesome.css">
@@ -109,7 +111,6 @@
     currentDateTimeElement.innerHTML = "Issued: " + formattedDate + " " + formattedTime;
 </script>
 
-
 <?php
 // Check if the 'Getdate' parameter is set in the URL
 if (isset($_GET['outduty'])) {
@@ -119,7 +120,7 @@ if (isset($_GET['outduty'])) {
     // Database connection parameters
     $servername = "localhost";
     $username = "root";
-    $password = "123456";
+    $password = "";
     $database = "parconhospital";
 
     // Create a database connection
@@ -143,7 +144,7 @@ if (isset($_GET['outduty'])) {
         echo "<table id='excel' border='1'>";
         echo "<thead style='background-color: #bbdefb;'>";
         echo "<tr>";
-        echo "<th>Date and Time </th>";
+        echo "<th>Date and Time</th>";
         echo "<th>Article</th>";
         echo "<th>Unit</th>";
         echo "<th>Quantity</th>";
@@ -174,15 +175,11 @@ if (isset($_GET['outduty'])) {
     
         echo "</tbody>";
     
-        // Display the total cost row here
-        echo "<tfoot>";
-        echo "<tr>";
-        echo "<td colspan='5'><strong>Total</strong></td>";
-        echo "<td>" . $totalCost . "</td>";
-        echo "</tr>";
-        echo "</tfoot>";
-    
+      
         echo "</table>";
+
+        // Display the overall total below the table
+  echo "<div style='text-align: right;'><h1>Subtotal: $totalCost</h1></div>";
     } else {
         echo "No data found for the specified date.";
     }
@@ -195,6 +192,7 @@ if (isset($_GET['outduty'])) {
     echo "No date parameter provided.";
 }
 ?>
+
 
 <script src="table2excel.js"></script>
 

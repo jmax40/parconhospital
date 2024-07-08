@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Your database connection logic here
             $servername = "localhost";
             $username = "root";
-            $password = "123456";
+            $password = "";
             $dbname = "parconhospital";
 
             // Create connection

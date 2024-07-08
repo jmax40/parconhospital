@@ -2,7 +2,7 @@
 // Replace these with your actual database connection details
 $host = 'localhost';
 $username = 'root';
-$password = '123456';
+$password = '';
 $database = 'parconhospital';
 
 // Create a database connection

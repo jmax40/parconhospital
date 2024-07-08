@@ -3,7 +3,7 @@
 // Replace with your actual database credentials
 $hostname = "localhost";
 $username = "root";
-$password = "123456";
+$password = "";
 $dbname = "parconhospital";
 
 // Create a database connection

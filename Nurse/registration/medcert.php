@@ -1,227 +1,160 @@
-
-
 <?php
-// Check if the form is submitted and process the data
+// Include TCPDF library
+require_once 'TCPDF-main/tcpdf.php';
+
+// Collect form data
+$name = isset($_POST['name']) ? $_POST['name'] : '';
+$age = isset($_POST['age']) ? $_POST['age'] : '';
+$address = isset($_POST['address']) ? $_POST['address'] : '';
+$gender = isset($_POST['gender']) ? $_POST['gender'] : '';
+$info = isset($_POST['info']) ? $_POST['info'] : '';
+$info2 = isset($_POST['info2']) ? $_POST['info2'] : ''; 
+$issue = isset($_POST['issue']) ? $_POST['issue'] : ''; 
+$date2 = isset($_POST['date2']) ? $_POST['date2'] : '';
+$date = isset($_POST['date']) ? $_POST['date'] : '';
+$doctor = isset($_POST['doctor']) ? $_POST['doctor'] : '';
+$lic = isset($_POST['lic']) ? $_POST['lic'] : '';
 
 
 
+// Format dates
+$formattedDate = !empty($date) ? date("F j, Y", strtotime($date)) : '';
+$formattedDate2 = !empty($date2) ? date("F j, Y", strtotime($date2)) : '';
+$formattedDate3 = !empty($date) ? date("n-j-Y", strtotime($date)) : '';
 
-
-
-
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Collect form data
-    $name = $_POST['name'] ?? '';
-    $age = $_POST['age'] ?? '';
-    $address = $_POST['address'] ?? '';
-    $gender = $_POST['gender'] ?? '';
-    $info = $_POST['info'] ?? '';
-    $info2 = $_POST['info2'] ?? ''; // Change this to the correct field name
-    $issue = $_POST['issue'] ?? ''; 
-   $date2 = $_POST['date2'] ?? '';
- $date = $_POST['date'] ?? '';
-
-
-if (!empty($date)) {
-    $formattedDate = date("F j, Y", strtotime($date));
-    $formattedDate2 = date("n-j-Y", strtotime($date));
- 
-}
-
-
-
-if (!empty($date2)) {
-    $formattedDate3 = date("F j, Y", strtotime($date2));
-}
-
-}
-?>
-
-
-
-<!DOCTYPE html>
+// Create HTML content
+$html = '<!DOCTYPE html>
 <html lang="en">
 <head>
-
-
-
-
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medical Certification</title>
     <style>
-            body {
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 30px;
+        .info {
+            font-weight: bold;
+            font-size: 20px;
+              text-align: justify; 
         }
 
+        .info02 {
+            font-weight: bold;
+            font-size: 20px; /* Adjust the font size as needed */
+            display: inline-block; /* Make sure text is centered within the span */
+            resize: both; /* Allow resizing */
+            overflow: auto; /* Add scrollbars when needed */
+            text-align: center;
+            display: block;
+        } 
 
-        <style>
-  .container {
-    display: flex;
-    justify-content: space-between;
-  }
+        .info01 {
+            font-size: 15px; /* Adjust the font size as needed */
+           text-align: justify; 
+        } 
 
-  .big-box {
-    flex: 1;
-    margin: 0 10px;
-    text-align: center;
-  }
+        .bold {
+            font-weight: bold;
+            font-size: 15px; /* Adjust the font size as needed */
+            display: inline-block; /* Change display to make it resizable */
+            resize: both; /* Allow resizing */
+            overflow: auto; /* Add scrollbars when needed */
+        }  
 
-  /* Increase checkbox size */
-  input[type="checkbox"] {
-    transform: scale(4.5); /* Increase checkbox size */
-    margin-bottom: 5px; /* Adjust spacing */
-  }
-  .underline-input {
-            width: 100%; /* Set the input fields to take full width */
-            border: none;
-            border-bottom: 1px solid white; /* Change the border color to white */
-            outline: none; /* Removes the default focus outline */
-            font-size: 40px; /* Set the font size */
-            font-family: 'Times New Roman', Times, serif; /* Set the font family */
-            font-weight: bold; /* Make the text bold */
-            resize: both; /* Allow resizing of the input fields */
-            color: black; /* Set text color */
-            background-color: transparent; /* Set background color to transparent */
-        }
+        .paragraph {
+            font-weight: bold;
+            font-size: 13px;
+            padding: none; /* Adjust the font size as needed */
+        }  
 
-
-    .align-left {
-    margin-left: 800px; /* Adjust this value as needed for spacing */
-  }
-    .no-spacing {
-    margin: 0;
-    padding: 0;
-  }
-
-  /* Center align text */
-  .no-spacing center {
-    text-align: center;
-  }
-
-    .responsive-input {
-    width: 100%;
-    box-sizing: border-box; /* Include padding and border in the width calculation */
-  }
-    .responsive-image {
-    max-width: 100%;
-    height: auto;
-    display: block; /* Remove default inline block space */
-  }
-
-
-
-.cutting-line {
-  height: 2px;
-  width: 100%;
-  max-width: 5000px;
-  border-top: 5px dotted #000;
-  margin-right: auto;
-  margin-left: auto;
+ .date {
+    text-align: right;
+    font-weight: bold;
+      font-size: 15px; 
 }
 
- .flex-container {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
+ .starting {
+      font-size: 15px; 
+}
 
-
-
-        .align-right {
-            text-align: left;
-        }
-
-
-
-textarea.textarea-border {
-    border: 1px solid #ccc; /* Add a border */
-    height: 150px; /* Increase the height */
-    padding: 10px; /* Add padding inside the textarea */
-    margin: 10px 0; /* Add spacing outside the textarea */
+body {
+    font-family: "Times New Roman", Times, serif;
 }
 
 
 
-</style>
 
+    </style>
 </head>
 <body>
 
 
+<img src="heading.png" alt="Description of the image" class="responsive-image">
 
 
 
+    <p class="date">' . $formattedDate . '</p>
 
 
-    <form>
-           
+<p class = "starting" >To whom it may concern:</p>
 
+   <p class="info01">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  This is to certify that <span class="bold">' .  ucwords(strtolower($name)) . ', ' . $age . '</span> y.o/' . $gender . ', a resident of  <span class="bold">' . ucwords(strtolower($address)) . '</span> has been examined on <span class="bold">' . $formattedDate2 . '</span>
+</p>';
 
-        <center>
-        <img src="heading.png" alt="Description of the image" class="responsive-image">
-       </center>
+if (!empty($info)) {
+    $html .= '<p class="info">Diagnosis: ' . ucwords(strtolower($info)). '</p>';
+}
 
-            <div class="flex-container">
-            <div>
-                 <div style="display: flex; flex-direction: column; align-items: center;">
-                <label style="margin-top: 5px;"></label>
+if (!empty($info2)) {
+    $html .= '<p class="info">Remarks: ' . ucwords(strtolower($info2)). ' </p>';
+}
 
-       
-            </div>
-            </div>
-            <div class="align-right">
-              <div style="display: flex; flex-direction: column; align-items: center;">
-                
-                <label style="margin-top: 5px;"> <?php echo $formattedDate; ?></label>
-             
-            </div>
-            </div>
-        </div>
+$html .= '<p class="info01">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    This is to certify that  
+    <span > This certification is issued to  <span class="bold">' . ucwords(strtolower($issue)) . '</span>, for whatever purpose it may serve him/her best.</span>
+</p>
 
+<div class="bottom-content">
+    <div style="display: flex; justify-content: space-between;">
+        <p class="paragraph" style="text-align: right;">' . $doctor . ' <br> ' . $lic . ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+        <p class="paragraph" style="text-align: left;">Note: Not for medico legal<br>  Not valid without seal <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  '.$formattedDate3.'  </p>
+    </div>
+</div>
 
-        <p>To whom it may concern:</p>
-        <br>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This is to certify that <?php echo $name; ?>,   <?php echo $age;?> y.o/<?php echo $gender; ?> a resident of
-          <?php echo $address; ?> Has been examined on <?php echo $formattedDate3; ?>.</p>
-        <br>
-
-      <h2><?php echo $info; ?></h2>
-      <h2><?php echo $info2; ?></h2>
-
-         
-      
-
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This certification is issue <?php echo $issue; ?> for whatever purpose it may serve him/her best.</p>
-        <br>
-        <br>
-         <br>
-    
-        
-
-
- <div class="flex-container">
-            <div>
-                 <div style="display: flex; flex-direction: column; align-items: center;">
-                <label style="margin-top: 5px;">Note: Not for medico legal</label>
-                <label style="margin-top: 5px;">Not valid without seal</label>
-                <label style="margin-top: 5px;"><?php echo $formattedDate2;?></label>
-       
-            </div>
-            </div>
-            <div class="align-right">
-              <div style="display: flex; flex-direction: column; align-items: center;">
-                
-                <label style="margin-top: 5px;">HASMIN P. TAMPUS, MD</label>
-                <label style="margin-top: 5px;">LIC. No.0116789</label>
-            </div>
-            </div>
-        </div>
-
-
-
-    </form>
 </body>
-</html>
+</html>';
+
+// Initialize TCPDF
+$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+// Set document information
+$pdf->SetCreator('Parcon Hospital');
+$pdf->SetAuthor('Parcon Hospital');
+$pdf->SetTitle('Medical Certification');
+$pdf->SetSubject('Medical Certification');
+$pdf->SetKeywords('Medical, Certification');
+
+// Set header and footer fonts
+$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+// Set default monospaced font
+$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+// Set margins
+$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_RIGHT);
+$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+// Remove page border
+$pdf->setPrintHeader(false);
+$pdf->setPrintFooter(false);
+
+// Add a page
+$pdf->AddPage();
+
+// Write HTML content
+$pdf->writeHTML($html, true, false, true, false, '');
+
+// Output the generated PDF to the browser (inline display)
+$pdf->Output(ucwords(strtolower($name)) . '.pdf', 'I');
+
+exit;
+?>

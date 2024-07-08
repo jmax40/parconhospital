@@ -190,11 +190,6 @@
 }
 
 
-.my-form {
-  /* Form styles */
-}
-
-
 
 
 
@@ -238,10 +233,13 @@
   padding-right: 10px;
 }
 
+
 .form-row input,
-.form-row textarea {
-  flex: 3;
-  width: 100%;
+.form-row textarea,
+.form-row select {
+    flex: 3;
+    width: 100%;
+
 }
 
 /* Additional style for textarea */
@@ -249,6 +247,9 @@
   resize: vertical;
   height: 100px; /* Increase the height */
 }
+
+
+
 
 /* Button hover style */
 .my-form button[type="submit"]:hover {
@@ -295,7 +296,9 @@
 
     /* Style the search input when focused */
     div.dataTables_wrapper input[type="search"]:focus {
-        border-color: #87CEFA; /* Change the border color to light blue (#87CEFA) */
+
+        border-color: #87CEFA;
+
         box-shadow: 0 0 5px rgba(135, 206, 250, 0.5); /* Change the box shadow color to light blue */
     }
 
@@ -455,8 +458,11 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center center;
+
+
 }
 
+ 
 
 
 
@@ -482,7 +488,8 @@ body {
 
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
-    <li><a href="registration.php"><i class="fas fa-notes-medical"></i> Medical Records</a></li>
+          <li><a href="ekonsulta.php"><i class="fas fa-notes-medical"></i> Ekonsulta Records </a></li>
+    <li><a href="find.php"><i class="fas fa-notes-medical"></i> Medical Records</a></li>
   <li><a href="../login.php"><i class="fas fa-sign-out-alt"></i> Log out</a></li>
     </ul>
   </div>
@@ -533,7 +540,6 @@ body {
             <th>Name</th>
             <th>Age</th>
             <th>Gender</th>
-            <th>Status</th>
             <th>Address</th>
             <th>Birth Place</th>
             <th>Birthday</th>
@@ -545,64 +551,57 @@ body {
         </tr>
     </thead>
     <tbody>
-        <?php include 'findprocess.php'; // Include the PHP file here ?>
+        <?php include 'findprocess.php';  ?>
 
-        <?php while ($row = $medical_record->fetch_assoc()): ?>
-            <tr>
-                <td><?= strtoupper($row['date']) ?></td>
-                <td><?= strtoupper($row['record_no']) ?></td>
-                <td><?= strtoupper($row['name']) ?></td>
-                <td><?= strtoupper($row['age']) ?></td>
-                <td><?= strtoupper($row['sex']) ?></td>
-                <td><?= strtoupper($row['status']) ?></td>
-                <td><?= strtoupper($row['address']) ?></td>
-                <td><?= strtoupper($row['birthplace']) ?></td>
-                <td><?= strtoupper($row['birthday']) ?></td>
-                <td><?= strtoupper($row['religion']) ?></td>
-                <td><?= strtoupper($row['contact_no']) ?></td>
-                <td>
-                    <button class="red-button delete-record" onclick="confirmDelete(<?php echo $row['id']; ?>)">
-                        <i class="fas fa-trash"></i> Delete
-                    </button>
-                </td>
-                <td>
-                    <button class="green-button" onclick="openForm1(<?= $row['id'] ?>, 
-                        '<?= strtoupper($row['record_no']) ?>', 
-                        '<?= strtoupper($row['name']) ?>', 
-                        '<?= strtoupper($row['age']) ?>', 
-                        '<?= strtoupper($row['address']) ?>', 
-                        '<?= strtoupper($row['sex']) ?>', 
-                        '<?= strtoupper($row['status']) ?>', 
-                        '<?= strtoupper($row['birthplace']) ?>', 
-                        '<?= strtoupper($row['occupation']) ?>',
-                        '<?= strtoupper($row['birthday']) ?>', 
-                        '<?= strtoupper($row['religion']) ?>',
-                        '<?= strtoupper($row['contact_no']) ?>', 
-                        '<?= strtoupper($row['date']) ?>')">
-                        <i class="fas fa-edit"></i> Update
-                    </button>
-                </td>
+       <?php while ($row = $medical_record->fetch_assoc()): ?>
+    <tr>
+        <td style="font-weight: bold;"><?= strtoupper($row['date']) ?></td>
+        <td style="font-weight: bold; color: #0000FF;"><?= strtoupper($row['record_no']) ?></td>
+        <td style="font-weight: bold;"><?= strtoupper($row['name']) ?></td>
+        <td style="font-weight: bold;"><?= strtoupper($row['age']) ?></td>
+        <td style="font-weight: bold;"><?= strtoupper($row['sex']) ?></td>
+        <td style="font-weight: bold;"><?= strtoupper($row['address']) ?></td>
+        <td style="font-weight: bold;"><?= strtoupper($row['birthplace']) ?></td>
+        <td style="font-weight: bold;"><?= strtoupper($row['birthday']) ?></td>
+        <td style="font-weight: bold;"><?= strtoupper($row['religion']) ?></td>
+        <td style="font-weight: bold;"><?= strtoupper($row['contact_no']) ?></td>
+        <td>
+             <button class="red-button delete-record" onclick="confirmDelete(<?php echo $row['id']; ?>)">
+                <i class="fas fa-trash"></i> Delete
+            </button>
+        </td>
+        <td>
+            <button class="green-button" onclick="openForm1(<?= $row['id'] ?>, 
+                '<?= strtoupper($row['record_no']) ?>', 
+                '<?= strtoupper($row['name']) ?>', 
+                '<?= strtoupper($row['age']) ?>', 
+                '<?= strtoupper($row['address']) ?>', 
+                '<?= strtoupper($row['sex']) ?>', 
+                '<?= strtoupper($row['status']) ?>', 
+                '<?= strtoupper($row['birthplace']) ?>', 
+                '<?= strtoupper($row['occupation']) ?>',
+                '<?= strtoupper($row['birthday']) ?>', 
+                '<?= strtoupper($row['religion']) ?>',
+                '<?= strtoupper($row['contact_no']) ?>',
+                '<?= strtoupper($row['date']) ?>',
+                '<?= strtoupper($row['ekonsulta']) ?>',
+                '<?= strtoupper($row['phic']) ?>')">
+                <i class="fas fa-edit"></i> Update
+            </button>
+        </td>
+        <td>
+            <button class="green-button" onclick="openForm2(<?= $row['id'] ?>, 
+                '<?= strtoupper($row['record_no']) ?>', 
+                '<?= strtoupper($row['name']) ?>', 
+                '<?= strtoupper($row['age']) ?>', 
+                '<?= strtoupper($row['address']) ?>', 
+                '<?= strtoupper($row['sex']) ?>')">
+                <i class="fas fa-list"></i> Medcert
+            </button>
+        </td>
+    </tr>
+<?php endwhile; ?>
 
-
-
-    <td>
-                    <button class="green-button" onclick="openForm2(<?= $row['id'] ?>, 
-                        '<?= strtoupper($row['record_no']) ?>', 
-                        '<?= strtoupper($row['name']) ?>', 
-                        '<?= strtoupper($row['age']) ?>', 
-                        '<?= strtoupper($row['address']) ?>', 
-                        '<?= strtoupper($row['sex']) ?>')">
-                        <i class="fas fa-list"></i> Medcert
-                    </button>
-                </td>
-
-
-
-
-
-
-            </tr>
-        <?php endwhile; ?>
     </tbody>
 </table>
 
@@ -676,6 +675,12 @@ body {
     </label>
   </div>
 </div>
+
+ <div class="form-row">
+   <input type="hidden" name="ekondate" value="<?php echo date("m-d-Y"); ?>">
+
+      </div>
+
 
 
       <div class="form-row">
@@ -786,6 +791,28 @@ body {
                 <label for="field12">Contact No:</label>
                 <input type="text" id="field12" name="contact_no">
             </div>
+
+
+
+
+<div class="form-row">
+    <label for="field12">Ekonsulta Registered? <br> Type: Yes or No</label>
+      <input type="text" id="field13"  name="ekonsulta">
+
+</div>
+
+
+         <div class="form-row">
+    <label for="field13">PHIC NO:</label>
+    <input type="text" id="field14" name="phic">
+          </div>
+
+ <div class="form-row">
+    <label id= "ekonlabel">Date Joined KPP:</label>
+   <input  type="Date"  id="dateekon"   name="ekondate" value="<?php echo date("m-d-Y"); ?>">
+
+      </div>
+   
             <button type="submit" name="update" class="submit-button">
     <i class="fas fa-edit"></i> Update
 </button>
@@ -802,7 +829,8 @@ body {
 <div class="overlay2" id="overlay2">
 
     <div class="form-container1" id="form-container1">
-        <form id="updateForm" action="medcert.php" method="post">
+        <form id="updateForm" action="medcert.php" method="post" target="_blank">
+
                <h2>
         Medical Certificate
       </h2> 
@@ -813,6 +841,44 @@ body {
             <div class="form-row">
                 <input type="hidden" id="field02" name="record_no">
             </div>
+
+
+
+
+<div class="form-row">
+    <label>Choose Doctor:</label>
+    <input list="browsers" name="doctor" id="doctorInput" onchange="displayValue2()" />
+    <datalist id="browsers">
+        <option value="HASMIN P. TAMPUS, MD" data-value2="LIC. No.0116789">
+        <option value="ELOISA M. TANDOG, MD" data-value2="LIC. No.0167750">
+        <option value="ARIES J. ACHURRA,RN, MD" data-value2="LIC. No.0167188">
+           <option value="KRISMER NOEL D. MAGSIPOC,RN, MD" data-value2="LIC. No.0161599">
+    </datalist>
+</div>
+
+<div class="form-row">
+  
+    <input type="hidden" name ="lic" id="value2Display" readonly />
+</div>
+
+
+<script>
+function displayValue2() {
+    var doctorInput = document.getElementById("doctorInput");
+    var dataList = document.getElementById("browsers");
+    var value2Display = document.getElementById("value2Display");
+
+    for (var i = 0; i < dataList.options.length; i++) {
+        if (dataList.options[i].value === doctorInput.value) {
+            value2Display.value = dataList.options[i].getAttribute("data-value2");
+            break;
+        }
+    }
+}
+</script>
+
+
+
             <div class="form-row">
                 <label for="field3">Name:</label>
                 <input type ="text" id="field03" name="name">
@@ -860,6 +926,9 @@ body {
 </div>
    
 
+
+
+
          
             <button type="submit" name="update" class="submit-button">
     <i class="fas fa-edit"></i> Medical Certificate
@@ -887,7 +956,7 @@ window.onload = function() {
   // Hide the overlay after a set time (e.g., 3 seconds) to simulate content loading
   setTimeout(function() {
     document.getElementById('overlay3').style.display = 'none';
-  }, 5000); // Change this timeout duration as needed
+  }, 2000); // Change this timeout duration as needed
 }
 
 
@@ -905,7 +974,7 @@ window.onload = function() {
 
 
 
-function openForm1(id, record_no, name, age, address, sex, status, birthplace, occupation, birthday, religion, contact_no, date) {
+function openForm1(id, record_no, name, age, address, sex, status, birthplace, occupation, birthday, religion, contact_no, date, ekonsulta, phic) {
     // Populate the form fields with the data
     document.getElementById('field1').value = id;
     document.getElementById('field2').value = record_no;
@@ -919,6 +988,8 @@ function openForm1(id, record_no, name, age, address, sex, status, birthplace, o
     document.getElementById('field10').value = birthday;
     document.getElementById('field11').value = religion;
     document.getElementById('field12').value = contact_no;
+    document.getElementById('field13').value = ekonsulta;
+    document.getElementById('field14').value = phic;
 
     // Show the overlay
     document.getElementById('overlay1').style.display = 'block';

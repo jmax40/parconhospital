@@ -20,7 +20,7 @@
   .top-nav {
     background-color: #3498db; /* Change this to your preferred shade of blue */
     color: black;
-    padding: 10px;
+    padding: 0px;
 }
 .top-nav ul {
     list-style: none;
@@ -164,6 +164,7 @@ label {
 }
 
 input[type="text"],
+input[type="Date"],
 input[type="radio"] {
     width: calc(100% - 22px); /* Adjusting for padding and border */
     padding: 10px;
@@ -171,7 +172,8 @@ input[type="radio"] {
     border: 1px solid #a9c8e8; /* Light blue border for input fields */
     box-sizing: border-box;
     transition: border-color 0.3s ease-in-out;
-    font-size: 16px; /* Increased font size for better readability */
+    font-size: 25px; /* Increased font size for better readability */
+    color: darkorange;
 }
 
 input[type="text"]:focus,
@@ -349,14 +351,16 @@ select:focus {
 
 
  <form id="registrationForm" class="my-form" action="process.php" method="post">
-      <h2>
-        <img src="../img/header.png" alt="Registration Image" style="max-width: 100%;">
-      </h2>
+     <center> <h2>
+        <img src="../img/spa.png" alt="Registration Image" style="max-width: 40%;">
+      </h2></center>
 
  <div class="form-row">
     <label for="record_no">M.R No:</label>
     <input type="text" id="record_no" name="record_no" required>
-    <div class="tooltip">Record # already used</div>
+<div class="tooltip">Tooltip Content</div>
+<div id="message"></div> <!-- This div will display the message -->
+
 </div>
 
 
@@ -385,7 +389,7 @@ select:focus {
   <select id="gender" name="status" required>
     <option value="" disabled selected>Select Status</option>
     <option value="Single">Single</option>
-    <option value="Merried">Merried</option>
+    <option value="Married">Married</option>
     <option value="Widowed">Widowed</option>
   </select>
 </div>
@@ -421,18 +425,81 @@ select:focus {
 
 
 
+<br>
+    <div class="form-row">
+        <label for="contact_no">Ekonsulta Registered ? </label>
+      </div>
+
+<div class="inline" style="display: flex; align-items: center;">
+
+    <label for="yesRadioButton" style="margin-right: 5px;">Yes</label>
+    <input type="radio" id="yesRadioButton" value="yes" name="ekonsulta" onclick="document.getElementById('textField').disabled = false;">
+    <label for="noRadioButton" style="margin-right: 5px;">No</label>
+    <input type="radio" id="noRadioButton" value ="no" name="ekonsulta" onclick="document.getElementById('textField').style.display = (this.checked ? 'none' : 'block');">
+</div>
+
+
+<br>
+<br>
+
+<div class="form-row">
+    <label id="textField1">Philhealth Pin:</label>
+    <input type="text" id="textField" name= "phic" style="display: none;">
+</div>
+
+
+ <div class="form-row">
+    <label id= "ekonlabel">Date Joined KPP:</label>
+   <input  type="Date"  id="dateekon"   name="ekondate" value="<?php echo date("m-d-Y"); ?>">
+
+      </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Initially hide the text field
+    document.getElementById('textField').style.display = 'none';
+     document.getElementById('textField1').style.display = 'none';
+       document.getElementById('dateekon').style.display = 'none';
+       document.getElementById('ekonlabel').style.display = 'none';
+    
+    
+    // Add event listeners to the radio buttons
+    document.getElementById('yesRadioButton').addEventListener('change', function() {
+        // Show the text field if "Yes" is selected
+        document.getElementById('textField').style.display = (this.checked ? 'block' : 'none');
+         document.getElementById('textField1').style.display = (this.checked ? 'block' : 'none');
+         document.getElementById('dateekon').style.display = (this.checked ? 'block' : 'none');
+          document.getElementById('ekonlabel').style.display = (this.checked ? 'block' : 'none');
+    });
+    
+    document.getElementById('noRadioButton').addEventListener('change', function() {
+        // Hide the text field if "No" is selected
+        document.getElementById('textField').style.display = (this.checked ? 'none' : 'block');
+        document.getElementById('textField1').style.display = (this.checked ? 'none' : 'block');
+         document.getElementById('dateekon').style.display = (this.checked ? 'none' : 'block');
+         document.getElementById('ekonlabel').style.display = (this.checked ? 'none' : 'block');
+    });
+});
+</script>
+
+
+
+
+
 <center> 
       <button type="submit" name="submit" class="submit-button">
   <i class="fas fa-check"></i> Register
 </button>
   <button type="button" id="clearFormButton" class="cancel-button">
-            <i class="fas fa-times"></i> Clear
+            <i class="fas fa-times"></i>     Cancel
         </button>
 </center>
 
     </form>
         </div>
     </div>
+
+
 
 
 
@@ -457,7 +524,8 @@ $(document).ready(function() {
     );
 });
 
-function checkDatabase(value) {
+function checkDatabase() {
+    var value = $('#record_no').val(); // Get the value from the input field
     // Perform an AJAX request to check the database
     $.ajax({
         type: 'POST',
@@ -466,12 +534,14 @@ function checkDatabase(value) {
         success: function(response) {
             // Apply red color if the record exists
             if (response === 'exists') {
-                $('#record_no').css('border', '1px solid red');
+                $('#record_no').css('border', '3px solid red');
                 $('.tooltip').addClass('show');
+                $('#message').text('* Medical Record Number Already exists.'); // Display the message
             } else {
                 // Apply default style if the record doesn't exist
-                $('#record_no').css('border', '1px solid black');
+                $('#record_no').css('border', '3px solid black');
                 $('.tooltip').removeClass('show');
+                $('#message').text(''); // Clear the message
             }
         }
     });

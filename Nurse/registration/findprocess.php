@@ -1,8 +1,87 @@
+
+
+
+<?php
+// Establish a database connection (update with your database credentials)
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "parconhospital";
+
+// Create a connection to the database
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check for connection errors
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Retrieve data from the database
+$sql = "SELECT * FROM nurse_medical_record ORDER BY id DESC";
+
+// Execute the query and store the result
+$medical_record = $conn->query($sql);
+
+// Close the database connection (not always necessary, depends on the application)
+// $conn->close();
+?>
+
+
+
+
+
+
+
+
+
+
+<?php
+// Establish a database connection (update with your database credentials)
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "parconhospital";
+
+// Create a connection to the database
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check for connection errors
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Retrieve data from the database
+$sql = "SELECT * FROM nurse_medical_record WHERE ekonsulta = 'yes' ORDER BY date DESC";
+
+// Execute the query and store the result
+$ekonsulta_record = $conn->query($sql);
+
+// Close the database connection (not always necessary, depends on the application)
+// $conn->close();
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <?php
 if (isset($_POST['submit'])) {
     $servername = "localhost";
     $username = "root";
-    $password = "123456";
+    $password = "";
     $dbname = "parconhospital";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -136,28 +215,6 @@ if (isset($_POST['submit'])) {
 
 
 
-<?php
-// Establish a database connection (update with your database credentials)
-$servername = "localhost";
-$username = "root";
-$password = "123456";
-$dbname = "parconhospital";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check for connection errors
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Retrieve data from the database
-$sql = "SELECT * FROM nurse_medical_record ORDER BY id DESC";
-// Replace with your actual table name
-$medical_record = $conn->query($sql);
-
-?>
-
-
 
 
 
@@ -167,7 +224,7 @@ $medical_record = $conn->query($sql);
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "123456";
+$password = "";
 $dbname = "parconhospital";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -201,7 +258,6 @@ if (isset($_GET['nurseDel'])) {
 
 
 
-
 <?php
 // Include your database connection code here
 // For example, include a file that connects to your database like "db_connection.php"
@@ -220,12 +276,13 @@ if (isset($_POST['update'])) {
     $birthday = $_POST['birthday'];
     $religion = $_POST['religion'];
     $contact_no = $_POST['contact_no'];
+    $datenow =  $_POST['ekondate'];
 
     // Perform database update
-$servername = "localhost";
-$username = "root";
-$password = "123456";
-$dbname = "parconhospital";
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "parconhospital";
 
     $db = new mysqli($servername, $username, $password, $dbname);
     
@@ -235,7 +292,8 @@ $dbname = "parconhospital";
 
     // Prepare the SQL update statement
     $sql = "UPDATE nurse_medical_record SET 
-        record_no = '$record_no',
+        record_no = 
+        '$record_no',
         name = '$name',
         age = '$age',
         address = '$address',
@@ -245,7 +303,8 @@ $dbname = "parconhospital";
         occupation = '$occupation',
         birthday = '$birthday',
         religion = '$religion',
-        contact_no = '$contact_no'
+        contact_no = '$contact_no',
+        ekondate = '$datenow'
         WHERE id = '$id'";
 
     if ($db->query($sql) === TRUE) {
@@ -284,11 +343,11 @@ $dbname = "parconhospital";
           </div>
         </body>
         </html>';
-            echo '<script>
-                setTimeout(function() {
-                    window.location.href = "find.php";
-                }, 3000); // Redirect to registration.php after 3 seconds
-            </script>';
+        echo '<script>
+            setTimeout(function() {
+                window.location.href = "find.php";
+            }, 3000); // Redirect to registration.php after 3 seconds
+        </script>';
     } else {
         echo "Error updating record: " . $db->error;
     }

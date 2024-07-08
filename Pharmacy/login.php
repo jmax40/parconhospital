@@ -18,7 +18,7 @@ if (isset($_POST['login'])) {
         } elseif ($row['position'] == "stocker") {
             header('location: stocker/index_in.php');
         } elseif ($row['position'] == "pos") {
-            header('location: pos/index_out.php');
+            header('location: pos/opd.php');
         } 
         
     } else {

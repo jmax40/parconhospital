@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DR. PARCON HOSPITAL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome for the search icon -->
+      <link rel="shortcut icon" href="../img/spa.ico" type="image/x-icon">
 </head>
 <style>
  
@@ -22,7 +23,7 @@
         display: flex;
         justify-content: space-between; /* Align items to the ends */
         align-items: center;
-        width: 90%; /* Adjust width of the container */
+        width: 80%; /* Adjust width of the container */
         max-width: 1000px; /* Set a maximum width */
         flex-direction: column; /* Stack items vertically */
     }
@@ -31,13 +32,13 @@
         display: flex;
         align-items: center;
         position: relative;
-        width: 70%; /* Adjust width for the search input */
+        width: 75%; /* Adjust width for the search input */
     }
 
     .search-input {
-        padding: 20px 20px 20px 60px; /* Adjust padding for icon placement */
+        padding: 20px 60px 20px 60px; /* Adjust padding for icon placement */
         border: 3px solid #F57C00;
-        border-radius: 40px; /* Smoother rounded corners */
+        border-radius: 30px; /* Smoother rounded corners */
         width: 100%; /* Occupy remaining space */
         font-size: 20px;
         outline: none;
@@ -50,7 +51,7 @@
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    padding: 20px;
+    padding: 15px;
     border: none;
     color: white;
     border-radius: 100%;
@@ -110,62 +111,6 @@
 
 
 
-
-    /* Media query for smaller screens */
-    @media screen and (max-width: 768px) {
-    
-
-
-
-    #web-view-menu {
-        display: none; /* Hide the web view menu on smaller screens */
-
-    }
-
-    #android-view-menu {
-        display: block; /* Display the Android view menu on smaller screens */
-    }
-
-
-
-
-
-
-    .search-input {
-        padding: 15px 15px 15px 60px; /* Adjust padding for icon placement */
-        border: 3px solid #F57C00;
-        border-radius: 40px; /* Smoother rounded corners */
-        width: 100%; /* Occupy remaining space */
-           font-size: 20px;
-        outline: none;
-        color: #F57C00;
-
-
-    }
-
-        .search-button {
-            padding: 15px;
-            font-size: 14px;
-        }
-
-        .search-container {
-            align-items: flex-start; /* Align items to the start */
-        }
-
-        .search-form {
-            width: 100%; /* Full width for smaller screens */
-            margin-bottom: 15px; /* Add space between elements */
-        }
-
-        .image-container {
-            width: 100%; /* Full width for smaller screens */
-        }
-
-
-
-
-
-    }
 
 
 
@@ -287,14 +232,73 @@
   margin-left: 50px;
 }
 
-@media screen and (max-height: 450px) {
+
+
+
+
+
+
+
+    /* Media query for smaller screens */
+    @media screen and (max-width: 768px) {
+    
+
+
   .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
+  .sidenav a {font-size: 15px;}
+
+
+  
+    #web-view-menu {
+        display: none; /* Hide the web view menu on smaller screens */
+
+    }
+
+    #android-view-menu {
+        display: block; /* Display the Android view menu on smaller screens */
+    }
 
 
 
 
+
+
+    .search-input {
+        padding: 15px 60px 15px 60px; /* Adjust padding for icon placement */
+        border: 3px solid #F57C00;
+        border-radius: 50px; /* Smoother rounded corners */
+        width: 100%; /* Occupy remaining space */
+        font-size: 17px;
+        outline: none;
+        color: #F57C00;
+
+
+    }
+
+        .search-button {
+            padding: 15px;
+            font-size: 14px;
+        }
+
+        .search-container {
+            align-items: flex-start; /* Align items to the start */
+        }
+
+        .search-form {
+            width: 100%; /* Full width for smaller screens */
+            margin-bottom: 15px; /* Add space between elements */
+        }
+
+        .image-container {
+            width: 100%; /* Full width for smaller screens */
+        }
+
+
+
+
+
+
+    }
 
 
 </style>
@@ -316,7 +320,7 @@
     <li><a href="#home" class="fas fa-chart-bar" > Dashboard</a></li>
     <li><a href="#about" class="fas fa-user-plus" > Registration</a></li>
     <li><a href="#services" class="fas fa-file-alt" > Referral Form</a></li>
-    <li><a href="#contact" class="fas fa-notes-medical" ></a> Clinical Form</li>
+    <li><a href="#contact" class="fas fa-notes-medical" >Clinical Form </a> </li>
 </ul>
 
 <ul id="android-view-menu">
@@ -336,7 +340,7 @@
         </div>
        <form class="search-form" action="search.php" method="GET">
         <button class="search-button"><i class="fas fa-search"></i></button>
-        <input type="text" class="search-input" name="search" placeholder=" " autocomplete="off">
+        <input type="text" class="search-input" name="search"  autocomplete="off">
     <div class="search-results"></div
 </form>
 
@@ -347,10 +351,12 @@
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <br>
+  <br>
   <a href="#"><i class="fas fa-chart-bar"></i> Dashboard</a>
   <a href="Registration.php"><i class="fas fa-user-plus"></i> Registration</a>
-  <a href="Referalform.html"><i class="fas fa-file-alt"></i> Referral Form</a>
-  <a href="clinicalrecord.html"><i class="fas fa-notes-medical"></i> Clinical Form</a>
+  <a href="#"><i class="fas fa-file-alt"></i> Referral Form </a>
+  <a href="#"><i class="fas fa-notes-medical"></i> Clinical Form</a>
 </div>
 
 

@@ -5,7 +5,7 @@ if (isset($_POST['submit'])) {
     // Establish a database connection (update with your database credentials)
     $servername = "localhost";
     $username = "root";
-    $password = "123456";
+    $password = "";
     $dbname = "parconhospital";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -68,7 +68,7 @@ var_dump($_POST);
 // Establish a database connection (update with your database credentials)
 $servername = "localhost";
 $username = "root";
-$password = "123456";
+$password = "";
 $dbname = "parconhospital";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -90,7 +90,7 @@ $pharmacy_product = $conn->query($sql);
 // Establish a database connection (update with your database credentials)
 $servername = "localhost";
 $username = "root";
-$password = "123456";
+$password = "";
 $dbname = "parconhospital";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -101,7 +101,7 @@ if ($conn->connect_error) {
 }
 
 // Retrieve data from the database
-$sql = "SELECT * FROM pharmacy_sales where status = 'UNPAID' ORDER BY id DESC"; // Replace with your actual table name
+$sql = "SELECT * FROM pharmacy_sales where status = 'UNPAID' and type = 'IN' ORDER BY id DESC"; // Replace with your actual table name
 $pharmacy_sales = $conn->query($sql); // Corrected variable name
 
 ?>
@@ -118,7 +118,7 @@ $pharmacy_sales = $conn->query($sql); // Corrected variable name
 // Establish a database connection (update with your database credentials)
 $servername = "localhost";
 $username = "root";
-$password = "123456";
+$password = "";
 $dbname = "parconhospital";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -187,7 +187,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Database connection parameters
         $servername = "localhost";  // Your MySQL server address
         $username = "root";  // Your MySQL username
-        $password = "123456";  // Your MySQL password
+        $password = "";  // Your MySQL password
         $database = "parconhospital";  // Your MySQL database name
 
         // Create a connection to the MySQL database

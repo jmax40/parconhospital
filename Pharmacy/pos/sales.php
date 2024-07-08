@@ -383,10 +383,10 @@ Navbar Start -->
 
 
 
-<table id="yourTableID" class="display">
+<<table id="yourTableID" class="display">
     <thead style="background-color: #bbdefb;">
         <tr>            
-        <th>Date</th>
+            <th>Date</th>
             <th>Time</th>
             <th>Pharmacy's</th>
             <th>Sale's</th>
@@ -397,56 +397,57 @@ Navbar Start -->
         <?php include 'process.php'; // Include the PHP file here ?>
 
         <?php
-$uniqueStockerData = array(); // Initialize an array to store unique stocker data
+        $uniqueStockerData = array(); // Initialize an array to store unique stocker data
 
-while ($row = $Sales_report->fetch_assoc()):
-    $stockerName = $row['stocker']; // Assuming the stocker name is in the 'stocker' column
-    $dateTimeCombined = $row['outduty']; // Assuming the date and time is in the 'outduty' column
-    $price = $row['cost']; // Assuming the price is in the 'cost' column
+        while ($row = $Sales_report->fetch_assoc()):
+            $stockerName = $row['stocker']; // Assuming the stocker name is in the 'stocker' column
+            $dateTimeCombined = $row['outduty']; // Assuming the date and time is in the 'outduty' column
+            $price = $row['cost']; // Assuming the price is in the 'cost' column
 
-    // Separate date and time using DateTime class
-    $dateTime = new DateTime($dateTimeCombined);
-    $date = $dateTime->format('Y-m-d');
-    $time = $dateTime->format('h:i A'); // 12-hour format with AM and PM
+            // Separate date and time using DateTime class
+            $dateTime = new DateTime($dateTimeCombined);
+            $date = $dateTime->format('Y-m-d');
+            $time = $dateTime->format('h:i A'); // 12-hour format with AM and PM
 
-    // Create a unique key combining stocker name, date, and time
-    $uniqueKey = $stockerName . $date . $time;
+            // Create a unique key combining stocker name, date, and time
+            $uniqueKey = $stockerName . $date . $time;
 
-    // Check if the unique key is not in the array
-    if (!array_key_exists($uniqueKey, $uniqueStockerData)) {
-        // Add the unique key to the array and initialize the total cost, date, and time
-        $uniqueStockerData[$uniqueKey] = array(
-            'name' => $stockerName,
-            'date' => $date,
-            'time' => $time,
-            'totalCost' => $price
-        );
-    } else {
-        // If the unique key is already in the array, update the total cost
-        $uniqueStockerData[$uniqueKey]['totalCost'] += $price;
-    }
-endwhile;
+            // Check if the unique key is not in the array
+            if (!array_key_exists($uniqueKey, $uniqueStockerData)) {
+                // Add the unique key to the array and initialize the total cost, date, and time
+                $uniqueStockerData[$uniqueKey] = array(
+                    'name' => $stockerName,
+                    'date' => $date,
+                    'time' => $time,
+                    'totalCost' => $price,
+                    'dateTimeCombined' => $dateTimeCombined // Store the combined date and time for each unique entry
+                );
+            } else {
+                // If the unique key is already in the array, update the total cost
+                $uniqueStockerData[$uniqueKey]['totalCost'] += $price;
+            }
+        endwhile;
 
-// Loop through the unique stocker data and display it
-foreach ($uniqueStockerData as $uniqueKey => $stockerInfo) {
-?>
-    <tr>
-        <td><?= $stockerInfo['date'] ?></td>
-        <td><?= $stockerInfo['time'] ?></td>
-        <td><?= $stockerInfo['name'] ?></td>
-        <td><?= $stockerInfo['totalCost'] ?></td>
-        <td>
-            <a class="excel-button" href="excel.php?outduty=<?php echo $dateTimeCombined ?>" target="_blank">
-                <img src="../img/excel.ico" alt="Export to Excel" class="excel-icon">
-            </a>
-        </td>
-    </tr>
-<?php
-}
-?>
-
+        // Loop through the unique stocker data and display it
+        foreach ($uniqueStockerData as $uniqueKey => $stockerInfo) {
+        ?>
+            <tr>
+                <td><?= $stockerInfo['date'] ?></td>
+                <td><?= $stockerInfo['time'] ?></td>
+                <td><?= $stockerInfo['name'] ?></td>
+                <td><?= $stockerInfo['totalCost'] ?></td>
+                <td>
+                    <a class="excel-button" href="excel.php?outduty=<?php echo $stockerInfo['dateTimeCombined'] ?>" target="_blank">
+                        <img src="../img/excel.ico" alt="Export to Excel" class="excel-icon">
+                    </a>
+                </td>
+            </tr>
+        <?php
+        }
+        ?>
     </tbody>
 </table>
+
 
 
 

@@ -16,7 +16,7 @@ if (isset($_POST['login'])) {
         if ($row['position'] == "admin") {
             header('location: admin/index_admin.html');
         } elseif ($row['position'] == "stocker") {
-            header('location: stocker/index_in.php');
+            header('location: registration/registration.php');
         } elseif ($row['position'] == "register") {
             header('location: registration/find.php');
         } 
